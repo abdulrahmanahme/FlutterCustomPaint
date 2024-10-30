@@ -16,11 +16,13 @@ class CustomPaintScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Container(
-        color: Colors.white,
-        child: CustomPaint(
-          painter: MasterCustomPainter(),
-          size: const Size(300, 300),
+      body: Center(
+        child: Container(
+          color: Colors.grey,
+          child: CustomPaint(
+            painter: MasterCustomPainter(),
+            size: const Size(300, 400),
+          ),
         ),
       ),
     );
