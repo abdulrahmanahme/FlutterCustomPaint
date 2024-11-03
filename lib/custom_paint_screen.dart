@@ -16,15 +16,57 @@ class CustomPaintScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(
-        child: Container(
-          color: Colors.grey,
-          child: CustomPaint(
-            painter: MasterCustomPainter(),
-            size: const Size(300, 400),
+      body: Stack(
+        children: [
+          // Center(
+          //   child: Container(
+          //     color: Colors.grey,
+          //     child: CustomPaint(
+          //       painter: MasterCustomPainter(),
+          //       size: const Size(300, 400),
+          //     ),
+          //   ),
+          // ),
+          ClipPath(
+            clipper: ContainerCustomClipper(),
+            child: Container(
+              height: 120,
+              width: double.infinity,
+              color: Colors.red.withOpacity(.8),
+            ),
           ),
-        ),
+          ClipPath(
+            clipper: ContainerCustomClipper(),
+            child: Container(
+              height: 100,
+              width: double.infinity,
+              color: Colors.red,
+            ),
+          ),
+        ],
       ),
     );
+  }
+}
+
+class ContainerCustomClipper extends CustomClipper<Path> {
+  var path = Path();
+  @override
+  Path getClip(Size size) {
+    path.lineTo(0, size.height);
+    // path.lineTo(size.width, size.height);
+    // path.lineTo(size.width, 0);
+    path.quadraticBezierTo(size.width*.25, size.height -100, size.width *.5, size.height-50);
+    path.quadraticBezierTo(size.width*.8, size.height, size.width, size.height);
+
+    path.lineTo(size.width, 0);
+
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return true;
   }
 }
