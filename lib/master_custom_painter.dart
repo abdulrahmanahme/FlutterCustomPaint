@@ -1,3 +1,6 @@
+import 'dart:typed_data';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
@@ -72,18 +75,65 @@ class MasterCustomPainter extends CustomPainter {
     // canvas.drawColor(Colors.green, BlendMode.dstIn);
 
     // Gradient as a canvas background
-    paint.strokeWidth = 3;
-    paint.color = Colors.black;
-    paint.shader = ui.Gradient.linear(Offset(size.width / 2, 0),
-        Offset(size.width / 2, size.height), [Colors.green, Colors.red]);
+    // paint.strokeWidth = 3;
+    // paint.color = Colors.black;
+    // paint.shader = ui.Gradient.linear(Offset(size.width / 2, 0),
+    //     Offset(size.width / 2, size.height), [Colors.green, Colors.red]);
+
+    //  Rect rac = Rect.fromLTRB(10, 20, 50, 6);
+
+    // // canvas.clipPath(Path());
+    // canvas.clipRect(Offset.zero&size);
+    // canvas.drawPaint(paint);
+
+    ///Optimize points plotting by using this method
+
+    // paint.strokeWidth = 3;
+    // paint.color = Colors.black;
+    // Float32List points = Float32List.fromList(
+    //     [6.0, size.width, 6, size.width / 3, size.height / 2, 0.0]);
+
+    // canvas.drawRawPoints(PointMode.polygon, points, paint);
+
+    ///  Draw image on canvas
+
+    /// https://www.youtube.com/watch?v=6L6wEvpZqZA&list=PLNF7sp688eT8gImxZlw4D0LhOwykuuskL&index=11
+    // canvas.drawImage(image, offset, paint)
+
+    ///Add depth to the shape   Shadow
+
+    // Offset center = Offset(size.width / 2, size.width / 2);
+    // Path path = Path()
+    //   ..addOval(Rect.fromCenter(
+    //       center: center, width: size.width / 2, height: size.height / 2));
+    // paint.strokeWidth = 3;
+    // paint.color = Colors.black;
+
+    // canvas.drawOval(Rect.fromCircle(center: center, radius: 20), paint);
+    // canvas.drawShadow(path, Colors.blue, 1, false);
 
 
-     Rect rac = Rect.fromLTRB(10, 20, 50, 6);
+  /// Draw text on canvas
+  
+  //   /// Create a text style
+  //   ui.ParagraphStyle paragraphStyle =
+  //       ui.ParagraphStyle(fontSize: 18, fontWeight: FontWeight.w300);
+  //   ui.TextStyle textStyle = ui.TextStyle(color: Colors.black);
+  // /// First create paragraphBuilder
+  //   ParagraphBuilder paragraphBuilder = ui.ParagraphBuilder(paragraphStyle);
+  //   paragraphBuilder.pushStyle(textStyle);
+  //   paragraphBuilder.addText('Test ParagraphBuilder Style');
+  //   ui.Paragraph paragraph = paragraphBuilder.build();
+  //   paragraph.layout(ui.ParagraphConstraints(width: size.width));
 
-    // canvas.clipPath(Path());
-    canvas.clipRect(Offset.zero&size);
-    canvas.drawPaint(paint);
+  // // second create drawParagraph
 
+  //   canvas.drawParagraph(paragraph, Offset(58,65));
+
+
+/// Clip layers of canvas
+
+    
   }
 
   @override

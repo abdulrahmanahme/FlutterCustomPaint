@@ -18,31 +18,31 @@ class CustomPaintScreen extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          // Center(
+          Center(
+            child: Container(
+              color: Colors.grey,
+              child: CustomPaint(
+                painter: MasterCustomPainter(),
+                size: const Size(300, 400),
+              ),
+            ),
+          ),
+          // ClipPath(
+          //   clipper: ContainerCustomClipper(),
           //   child: Container(
-          //     color: Colors.grey,
-          //     child: CustomPaint(
-          //       painter: MasterCustomPainter(),
-          //       size: const Size(300, 400),
-          //     ),
+          //     height: 120,
+          //     width: double.infinity,
+          //     color: Colors.red.withOpacity(.8),
           //   ),
           // ),
-          ClipPath(
-            clipper: ContainerCustomClipper(),
-            child: Container(
-              height: 120,
-              width: double.infinity,
-              color: Colors.red.withOpacity(.8),
-            ),
-          ),
-          ClipPath(
-            clipper: ContainerCustomClipper(),
-            child: Container(
-              height: 100,
-              width: double.infinity,
-              color: Colors.red,
-            ),
-          ),
+          // ClipPath(
+          //   clipper: ContainerCustomClipper(),
+          //   child: Container(
+          //     height: 100,
+          //     width: double.infinity,
+          //     color: Colors.red,
+          //   ),
+          // ),
         ],
       ),
     );
