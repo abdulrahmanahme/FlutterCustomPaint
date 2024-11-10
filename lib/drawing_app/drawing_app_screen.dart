@@ -11,33 +11,27 @@ class DrawingAppScreen extends StatefulWidget {
 }
 
 class _DrawingAppScreenState extends State<DrawingAppScreen> {
-  final _offset = <Offset>[];
+  final _offset = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: GestureDetector(
         onPanStart: (details) {
-          log('onPanStart : ${details}');
-          
+          setState(() {
+            _offset.add(details.globalPosition);
+          });
         },
         onPanUpdate: (details) {
-          log('onPanUpdate : ${details}');
-         setState(() {
-          _offset.add(details.globalPosition);
-            
+          setState(() {
+            _offset.add(details.globalPosition);
           });
         },
         onPanEnd: (details) {
-          log('onPanEnd : ${details}');
           setState(() {
-          _offset.add(details.globalPosition);
-            
+            _offset.add(null);
           });
         },
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          color: Colors.red[50],
+        child: Center(
           child: CustomPaint(
             painter: DrawingCustomPainter(offset: _offset),
             size: Size(MediaQuery.of(context).size.width,
@@ -50,19 +44,20 @@ class _DrawingAppScreenState extends State<DrawingAppScreen> {
 }
 
 class DrawingCustomPainter extends CustomPainter {
-  DrawingCustomPainter({required this.offset});
+  DrawingCustomPainter({required this.offset}) : super();
   final offset;
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint();
-    paint.strokeWidth = 3;
-    paint..color=Colors.black;
-    
-    
-    for (var offsets in offset) {
-      canvas.drawPoints(PointMode.points, [offsets], paint);
-      // canvas.drawLine(offsets, offsets, paint);
+    paint.strokeWidth = 4;
+    paint..color = Colors.black;
 
+    for (int i = 0; i < offset.length; i++) {
+      if (offset[i] != null && offset[i + 1] != null) {
+        canvas.drawLine(offset[i], offset[i + 1], paint);
+      } else if (offset[i] != null && offset[i + 1] == null) {
+        canvas.drawPoints(PointMode.points, [offset[i]], paint);
+      }
     }
   }
 
