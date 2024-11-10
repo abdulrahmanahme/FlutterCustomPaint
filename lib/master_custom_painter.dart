@@ -112,26 +112,43 @@ class MasterCustomPainter extends CustomPainter {
     // canvas.drawOval(Rect.fromCircle(center: center, radius: 20), paint);
     // canvas.drawShadow(path, Colors.blue, 1, false);
 
+    /// Draw text on canvas
 
-  /// Draw text on canvas
+     /// Create a text style
   
-  //   /// Create a text style
-  //   ui.ParagraphStyle paragraphStyle =
-  //       ui.ParagraphStyle(fontSize: 18, fontWeight: FontWeight.w300);
-  //   ui.TextStyle textStyle = ui.TextStyle(color: Colors.black);
-  // /// First create paragraphBuilder
-  //   ParagraphBuilder paragraphBuilder = ui.ParagraphBuilder(paragraphStyle);
-  //   paragraphBuilder.pushStyle(textStyle);
-  //   paragraphBuilder.addText('Test ParagraphBuilder Style');
-  //   ui.Paragraph paragraph = paragraphBuilder.build();
-  //   paragraph.layout(ui.ParagraphConstraints(width: size.width));
+      ui.ParagraphStyle paragraphStyle =
+          ui.ParagraphStyle(fontSize: 18, fontWeight: FontWeight.w300);
+      ui.TextStyle textStyle = ui.TextStyle(color: Colors.black);
+    /// First create paragraphBuilder
+      ParagraphBuilder paragraphBuilder = ui.ParagraphBuilder(paragraphStyle);
+      paragraphBuilder.pushStyle(textStyle);
+      paragraphBuilder.addText('Test ParagraphBuilder Style');
+      ui.Paragraph paragraph = paragraphBuilder.build();
+      paragraph.layout(ui.ParagraphConstraints(width: size.width));
 
-  // // second create drawParagraph
+    // // second create drawParagraph
 
-  //   canvas.drawParagraph(paragraph, Offset(58,65));
+    //   canvas.drawParagraph(paragraph, Offset(58,65));
 
+    /// Draw rect with radius
 
-/// Clip layers of canvas
+    // Rect rect = Rect.fromCenter(
+    //     center: Offset(size.width / 2,60), width: size.width / 2, height: size.height/3);
+
+    // // RRect rRect = RRect.fromRectAndRadius(rect, const Radius.circular(25));
+
+    //   /// Draw fromRectAndCorners
+    // RRect rRect = RRect.fromRectAndCorners(rect, bottomLeft:const Radius.circular(20),
+    // topLeft:const Radius.circular(20), );
+
+    /// Clip layers of canvas
+
+    
+    // Rect sizeRact = Offset.zero & size / 2;
+    // canvas.clipRect(
+    //   sizeRact,
+    // );
+
 
     
   }
