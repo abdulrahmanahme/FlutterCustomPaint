@@ -1,4 +1,5 @@
 import 'package:custom_paint/custom_paint_screen.dart';
+import 'package:custom_paint/drawing_app/drawing_app_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const CustomPaintScreen(),
+      home: const DrawingAppScreen(),
     );
   }
 }
